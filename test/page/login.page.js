@@ -85,8 +85,14 @@ class loginPage {
                 await this.btnPrimary.click();   
             }
 
-            async closeBtn () {
-                await this.closeButton.click();   
+            async closeBtn() {
+                await this.closeButton.waitUntil(async () => {
+                    return await this.closeButton.isDisplayed(); 
+                }, {
+                    timeout: 5000,
+                    timeoutMsg: "Close button isn't working"
+                });
+                await this.closeButton.click(); 
             }
 
 
